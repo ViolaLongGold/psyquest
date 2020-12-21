@@ -27,17 +27,19 @@ GMS <- function(label = "GMS",
                 subscales = c(),
                 short_version = FALSE,
                 configuration_filepath = NULL,
+                language = "en",
                 ...) {
   stopifnot(purrr::is_scalar_character(label))
 
   main_test_gms(
     label = label,
     items = get_items(label, subscales = subscales, short_version = short_version, configuration_filepath = configuration_filepath),
-    subscales = subscales
+    subscales = subscales,
+    language = language
   )
 }
 
-main_test_gms <- function(label, items, subscales) {
+main_test_gms <- function(label, items, subscales, language) {
   elts <- c()
   prompt_id <- NULL
   prompt_ids <- items %>% pull(prompt_id)
@@ -50,7 +52,33 @@ main_test_gms <- function(label, items, subscales) {
       items %>%
       filter(stringr::str_detect(prompt_id, sprintf("T%s_%04d", label, question_numbers[counter])))
     num_of_options <- strsplit(item_bank_row$option_type, "-")[[1]][1]
-    choices <- sprintf("btn%d_text", 1:num_of_options)
+    if (question_numbers[counter] != 32) {
+      choices <- sprintf("btn%d_text", 1:num_of_options)
+    } else {
+      choices <- c("none",
+                           "voice",
+                           "piano",
+                           "guitar",
+                           "drums",
+                           "xylophone",
+                           "flute",
+                           "oboe",
+                           "clarinet",
+                           "bassoon",
+                           "trumpet",
+                           "trombone",
+                           "tuba",
+                           "saxophone",
+                           "horn",
+                           "violin",
+                           "cello",
+                           "viola",
+                           "double bass",
+                           "harp",
+                           "other")
+      }
+
+
     choice_ids <- sprintf("T%s_%04d_CHOICE%d", label, question_numbers[counter], 1:num_of_options)
 
     arrange_vertically <- TRUE
