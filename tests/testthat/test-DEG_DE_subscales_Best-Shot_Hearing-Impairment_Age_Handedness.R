@@ -32,6 +32,9 @@ app$expect_ui_text("Deine Ergebnisse wurden gespeichert. Du kannst das Browserfe
 
 results <- app$get_results() %>% as.list()
 
+age <- (as.numeric(strsplit(as.character(Sys.Date()), "-")[[1]][1])-1999)*12 +
+        as.numeric(strsplit(as.character(Sys.Date()), "-")[[1]][2])-2
+
 expect_equal(names(results), c("DEG"))
 expect_equal(
   results[["DEG"]],
@@ -45,7 +48,7 @@ expect_equal(
     'Best Shot' = 1,
     'Hearing Impairment' = 1,
     'Type of Hearing Impairment' = "Tinnitus",
-    Age = 261,
+    Age = age,
     Handedness = c(1, 2)
   )
 )

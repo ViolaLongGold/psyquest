@@ -50,6 +50,9 @@ app$expect_ui_text("Deine Ergebnisse wurden gespeichert. Du kannst das Browserfe
 
 results <- app$get_results() %>% as.list()
 
+age <- (as.numeric(strsplit(as.character(Sys.Date()), "-")[[1]][1])-1999)*12 +
+        as.numeric(strsplit(as.character(Sys.Date()), "-")[[1]][2])-2
+
 expect_equal(names(results), c("DEG"))
 expect_equal(
   results[["DEG"]],
@@ -69,7 +72,7 @@ expect_equal(
     'Hearing Impairment' = 1,
     'Type of Hearing Impairment' = "Ähm, hab ich mich verklickt?!",
     Gender = 1,
-    Age = 261,
+    Age = age,
     Nationality = "DE",
     'Country Formative Years' = "TR",
     'First Language' = "tr",
