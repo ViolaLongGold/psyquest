@@ -137,7 +137,7 @@ expect_equal(
     Emotions = 7,
     "Singing Abilities" = 7,
     "Perceptual Abilities" = 7,
-    Instrument = 15,
+    Instrument = "horn",
     "Start Age" = 1,
     "Absolute Pitch" = 1
   )

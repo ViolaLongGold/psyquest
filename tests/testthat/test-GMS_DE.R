@@ -41,7 +41,7 @@ app$click("btn1_text")
 app$click("btn2_text")
 app$click("btn3_text")
 app$expect_ui_text("Frage 32 von 41 Das Instrument (einschließlich Gesang), welches ich am besten spiele ist _ . Ich spiele kein Instrument. Gesang Klavier Gitarre Schlagzeug Xylophon Flöte Oboe Klarinette Fagott Trompete Posaune Tuba Saxophon Horn Violine Cello Bratsche Kontrabass Harfe andere")
-app$click("harp")
+app$click("btn20_text")
 app$click("btn5_text")
 app$click("btn6_text")
 app$click("btn7_text")
@@ -93,7 +93,7 @@ expect_equal(
     q29 = "btn1_text",
     q30 = "btn2_text",
     q31 = "btn3_text",
-    q32 = "harp",
+    q32 = "btn20_text",
     q33 = "btn5_text",
     q34 = "btn6_text",
     q35 = "btn7_text",
@@ -109,7 +109,7 @@ expect_equal(
     Emotions = 4.5,
     "Singing Abilities" = 2.857142857,
     "Perceptual Abilities" = 5.7777778,
-    Instrument = 20,
+    Instrument = "harp",
     "Start Age" = 5,
     "Absolute Pitch" = 1
   )
